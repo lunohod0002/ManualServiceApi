@@ -11,14 +11,13 @@ services:
     command: ["-p", "5432"]
 
   organizations:
-    image: organizations_image
     build:
       context: .
+      dockerfile: Dockerfile
     container_name: organizations_app
     env_file:
       - .env-not-dev
     depends_on:
       - db
-    command: ["/organizations/start_fastapi.sh"]
     ports:
       - 8000:8000
